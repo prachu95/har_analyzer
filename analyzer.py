@@ -23,6 +23,8 @@ for x in range(0, 86):
     with open(os.path.join('har_files',f'{x}.har'), 'r') as f:
         har_page = HarPage('page_1', har_data=json.loads(f.read()))
 
+    entries = har_page.filter_entries()
+
     with open ("output.csv", "a") as csv_file:
         csv_app = csv.writer(csv_file)
         csv_app.writerow([har_page.url,
@@ -30,14 +32,14 @@ for x in range(0, 86):
                           har_page.page_load_time,
                           har_page.time_to_first_byte,
                           har_page.page_size,
+                          har_page.initial_load_time,
                           har_page.content_load_time,
                           har_page.html_load_time,
                           har_page.css_load_time,
                           har_page.js_load_time,
-                          har_page.initial_load_time,
+                          har_page.image_load_time,
                           har_page.audio_load_time,
-                          har_page.video_load_time,
-                          har_page.image_load_time])
+                          har_page.video_load_time])
 
 
 
@@ -45,6 +47,8 @@ for x in range(0, 86):
 '''
 ### WORK WITH LOAD TIMES (all load times are in ms) ###
 # Link http://pythonhosted.org/haralyzer/haralyzer.html
+
+# https://github.com/mrname/haralyzer
 
 #Page url
 print("Page URL")

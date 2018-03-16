@@ -9,6 +9,18 @@ with open('b.har', 'r') as f:
 # Link http://pythonhosted.org/haralyzer/haralyzer.html
 
 
+entries = har_page.filter_entries()
+
+#print(entries)
+
+print(har_page.get_total_size(entries))
+
+print(har_page.get_load_time(request_type='GET'))
+
+print(har_page.total_load_time(request_type='GET'))
+
+
+'''
 # Audio Load Time
 print(har_page.audio_load_time)
 
@@ -65,7 +77,7 @@ print(har_page.video_size_trans)
 
 
 
-
+'''
 
 
 # Get the TOTAL image load time
